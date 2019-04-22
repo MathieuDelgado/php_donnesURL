@@ -13,7 +13,25 @@
 		<!-- header -->
 		<header>
 			<h1></h1>
-			<a href="bonjour.php?nom=Dupont&amp;prenom=Jean">Dis moi bonjour !</a>
+			<p>
+			Veuillez taper votre mot de passe :
+			</p>
+			<form action="secret.php" method="post">
+
+				<p>
+					<input type="password" name="motDePasse"/><br/>
+
+
+
+   					 <input type="text" name="prenom" />
+
+
+					<br/><input type="submit" value="valider"/>
+
+
+				</p>
+			</form>
+
 			<nav>
 				<ul>
 
