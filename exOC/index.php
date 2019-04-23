@@ -24,7 +24,7 @@ catch (Exception $e)
 <?php
 // Sous MAMP (Mac)
 $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', '', '');
-$reponse = $bdd->query("SELECT * FROM jeux_video WHERE possesseur = 'patrick' ORDER BY prix DESC LIMIT 2,5");
+$reponse = $bdd->query("SELECT * FROM jeux_video WHERE possesseur = 'florent' AND prix<25 ORDER BY prix DESC");
 
 
 
@@ -57,6 +57,25 @@ $reponse->closeCursor(); // Termine le traitement de la requête
 			<h1></h1>
 			<p>
 			Voici ma page :
+
+
+
+
+			<form action="secret.php" method="get">
+
+				<p>le jeu de qui voulez vous ?<br/>
+					<input type="text" name="possesseur"/><br/>
+					pour quel budjet au maximum ?<br/>
+
+
+							<input type="text" name="prix_max" />
+
+
+					<br/><input type="submit" value="valider"/>
+
+
+				</p>
+</form>
 			</p>
 
 

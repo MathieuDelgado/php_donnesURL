@@ -14,22 +14,30 @@
 		<header>
 			<h1></h1>
 			<p>
-			<p>Je sais comment tu t'appelles, hé hé. Tu t'appelles <?php echo strip_tags($_POST['prenom']); ?> !</p>
-<?php 
-			$mdp= $_POST['motDePasse'];    
-			if(isset($_POST['motDePasse']) AND $mdp==="kangourou"){
+			<?php
+					try
+					{
+						$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', '', '');
+					}
+					catch(Exception $e)
+					{
+							die('Erreur : '.$e->getMessage());
+					}
 
-				echo "les mots de passes de la nasa Sont Verslinfinietaudela";
+					$req = $bdd->prepare('SELECT nom, prix FROM jeux_video WHERE possesseur = ?  AND prix <= ? ORDER BY prix');
+					$req->execute(array($_GET['possesseur'], $_GET['prix_max']));
 
-			}
+					echo '<ul>';
+					while ($donnees = $req->fetch())
+					{
+						echo '<li>' . $donnees['nom'] . ' (' . $donnees['prix'] . ' EUR)</li>';
+					}
+					echo '</ul>';
 
-print_r($_POST['motDePasse']);
-print_r($_SERVER['REMOTE_ADDR']);
-print_r($_COOKIE);
+					$req->closeCursor();
 
-$_ENV
+			?>
 
-?>
 
     
             
