@@ -23,7 +23,11 @@
 
 			}
 
+print_r($_POST['motDePasse']);
+print_r($_SERVER['REMOTE_ADDR']);
+print_r($_COOKIE);
 
+$_ENV
 
 ?>
 

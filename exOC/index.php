@@ -3,6 +3,48 @@
 	<head>
 		<title></title>
 
+
+
+<?php
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', '', '');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+?>
+
+
+
+
+
+
+<?php
+// Sous MAMP (Mac)
+$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', '', '');
+$reponse = $bdd->query("SELECT * FROM jeux_video WHERE possesseur = 'patrick' ORDER BY prix DESC LIMIT 2,5");
+
+
+
+// On affiche chaque entrée une à une
+while ($donnees = $reponse->fetch())
+{
+?>
+    <p>
+    <strong>Jeu</strong> : <?php echo $donnees['nom']; ?><br />
+    Le possesseur de ce jeu est : <?php echo $donnees['possesseur']." ce jeu coute ".$donnees['prix']." E"; ?>
+   </p> 
+<?php
+}
+
+$reponse->closeCursor(); // Termine le traitement de la requête
+
+?>
+
+
+
 		<meta charset="utf-8" />
         <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" /> -->
@@ -14,23 +56,9 @@
 		<header>
 			<h1></h1>
 			<p>
-			Veuillez taper votre mot de passe :
+			Voici ma page :
 			</p>
-			<form action="secret.php" method="post">
 
-				<p>
-					<input type="password" name="motDePasse"/><br/>
-
-
-
-   					 <input type="text" name="prenom" />
-
-
-					<br/><input type="submit" value="valider"/>
-
-
-				</p>
-			</form>
 
 			<nav>
 				<ul>
