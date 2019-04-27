@@ -23,7 +23,7 @@ catch (Exception $e)
 
 <?php
 // Sous MAMP (Mac)
-$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', '', '');
+$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', '', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 $reponse = $bdd->query("SELECT * FROM jeux_video WHERE possesseur = 'florent' AND prix<25 ORDER BY prix DESC");
 
 
